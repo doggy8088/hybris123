@@ -23,6 +23,8 @@ EOF
 cat <<EOF >> ~/.bashrc
 shopt -s direxpand
 shopt -s no_empty_cmd_completion
+
+source ~/.bash_profile
 EOF
 
 source ~/.bash_profile
