@@ -6,6 +6,7 @@ cat <<EOF > ~/.bash_profile
 export HYBRIS_HOME_DIR=/opt/HYBRISCOMM6600P_6-70003031
 export ANT_HOME=\${HYBRIS_HOME_DIR}/hybris/bin/platform/apache-ant-1.9.1
 export PATH=\${PATH}:\${ANT_HOME}/bin
+export INITIAL_ADMIN=nimda
 EOF
 
 # 設定幾個好用的 alias 命令
@@ -26,10 +27,12 @@ EOF
 
 source ~/.bash_profile
 
+mkdir -p ${HYBRIS_HOME_DIR}/hybris123
+cp -a src ${HYBRIS_HOME_DIR}/hybris123/src
+cp -a pom.xml ${HYBRIS_HOME_DIR}/hybris123/pom.xml
+
 # 解壓縮 HYBRISCOMM6600P_6-70003031.zip (此為 SAP Commerce 平台程式)
 unzip HYBRISCOMM6600P_6-70003031.zip -d ${HYBRIS_HOME_DIR}
-
-ln -s $PWD ${HYBRIS_HOME_DIR}/hybris123
 
 echo '>>>> Java 8 Software Development Kit <<<<'
 javac -version
