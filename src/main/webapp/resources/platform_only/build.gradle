@@ -1,0 +1,32 @@
+// Hybris123SnippetStart build.gradle
+apply plugin: 'installer-platform-plugin'
+def platformOnly = platform {
+    afterSetup {
+        ensureAdminPasswordSet()
+    }
+}
+
+task setup {
+    doLast {
+        platformOnly.setup()
+    }
+}
+
+task buildSystem(dependsOn: setup) {
+    doLast {
+        platformOnly.build()
+    }
+}
+
+task initialize(dependsOn: buildSystem) {
+    doLast {
+        platformOnly.initialize()
+    }
+}
+
+task start {
+    doLast {
+        platformOnly.start()
+    }
+}
+// Hybris123SnippetEnd
